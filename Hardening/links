@@ -1,0 +1,22 @@
+Comprobaciondel hardening mediante Lynis
+
+#Clonamos y descargamos el repositorio
+
+https://github.com/CISOfy/lynis
+
+git clone https://github.com/CISOfy/lynis 
+
+##Ejecutamos el script
+
+cd lynis; ./lynisauditsystem
+
+
+Otros scripts para customizar nuestro VPS
+
+https://github.com/Jsitech/JShielder
+
+https://github.com/konstruktoid/hardening
+
+https://fwhibbit.es/en/basic-security-configuration-for-a-vps
+
+https://github.com/akcryptoguy/vps-harden
