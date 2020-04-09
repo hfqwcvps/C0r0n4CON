@@ -1,0 +1,38 @@
+#Instalamos el repositorio para instalar PHP7.1
+
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get update
+sudo apt-get install -y php7.1 php7.1-cli php7.1-common php7.1-mbstring php7.1-gd php7.1-intl php7.1-xml php7.1-mysql php7.1-zip php7.1-curl php7.1-xmlrpc
+
+##Instalamos Apache
+sudo apt-get install -y apache2 libapache2-mod-php
+
+###Instalamos y customizamos MySQL
+
+sudo apt-get install -y mysql-server php-mysql
+sudo mysql_secure_installation
+
+sudo mysql -u root -p
+Enter password:
+CREATE DATABASE owncloud;
+GRANT ALL ON owncloud.* to 'owncloud'@'localhost' IDENTIFIED BY '_password_';
+FLUSH PRIVILEGES;
+quit
+
+####Descargamos y otorgamos permisos para Owncloud
+
+cd /tmp
+wget https://download.owncloud.org/community/owncloud-10.2.0.tar.bz2
+
+cd /var/www/html
+sudo tar xjf /tmp/owncloud-10.2.0.tar.bz2
+sudo chown -R www-data:www-data owncloud
+sudo chmod -R 755 owncloud
+sudo rm -f /tmp/owncloud-10.2.0.tar.bz2
+
+
+#####Reiniciamos Apche y accedemos Owncloud para terminar la configuracion
+
+sudo systemctl restart apache2
+
+https://localhost/owncloud/
